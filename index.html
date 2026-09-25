@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tikka n Curry — G-7 Markaz, Islamabad</title>
+<meta name="description" content="Tikka n Curry — BBQ, karahi, biryani and iftar buffets in G-7 Markaz, Islamabad. Dine-in, drive-through and delivery.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#1c1712; --char-2:#241d16; --panel:#2c2119;
+  --cream:#f4ecda; --cream-dim:#cfc2a4;
+  --saffron:#dba234; --ember:#b3472b; --ember-2:#8f351f;
+  --line:rgba(244,236,218,.14);
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:70px;}
+html,body{margin:0;height:100%;}
+body{
+  background:var(--char); color:var(--cream);
+  font-family:'Work Sans',system-ui,sans-serif;
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif; color:var(--cream); margin:0; font-weight:600;}
+p{margin:0;}
+a{color:inherit;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 clamp(20px,5vw,48px);}
+img{max-width:100%;display:block;}
+::selection{background:var(--saffron);color:var(--char);}
+:focus-visible{outline:2px solid var(--saffron); outline-offset:3px;}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important;} }
+
+/* ---------- nav ---------- */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(28,23,18,.88); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; height:70px;}
+.brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:1.25rem; font-weight:600; letter-spacing:.2px;}
+.brand .mark{width:34px;height:34px;flex:none;}
+.nav-links{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
+.nav-links a{font-size:.95rem; text-decoration:none; color:var(--cream-dim); transition:color .2s;}
+.nav-links a:hover{color:var(--saffron);}
+.nav-cta{display:flex; align-items:center; gap:14px;}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:11px 22px; border-radius:2px;
+  font-size:.9rem; font-weight:600; text-decoration:none; border:1px solid transparent; cursor:pointer;
+  transition:transform .18s ease, background .2s, border-color .2s;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-solid{background:var(--ember); color:var(--cream); border-color:var(--ember);}
+.btn-solid:hover{background:var(--ember-2);}
+.btn-line{border-color:var(--line); color:var(--cream);}
+.btn-line:hover{border-color:var(--saffron); color:var(--saffron);}
+.menu-toggle{display:none; background:none; border:0; color:var(--cream); font-size:1.6rem; cursor:pointer;}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; overflow:hidden;
+  padding:96px 0 84px;
+  background:
+    radial-gradient(ellipse 900px 500px at 82% -10%, rgba(219,162,52,.20), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 10% 110%, rgba(179,71,43,.28), transparent 60%),
+    var(--char);
+}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;}
+.eyebrow-row{display:flex; align-items:center; gap:12px; margin-bottom:22px; color:var(--saffron); font-size:.92rem;}
+.stars{letter-spacing:2px;}
+.hero h1{font-size:clamp(2.7rem,5.4vw,4.6rem); line-height:.98; letter-spacing:-.5px;}
+.hero h1 em{font-style:italic; color:var(--saffron); font-weight:500;}
+.hero p.lede{margin-top:22px; max-width:46ch; color:var(--cream-dim); font-size:1.12rem;}
+.hero-ctas{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+.hero-meta{display:flex; gap:28px; margin-top:44px; flex-wrap:wrap;}
+.hero-meta div{border-left:1px solid var(--line); padding-left:16px;}
+.hero-meta b{display:block; font-family:'Fraunces',serif; font-size:1.3rem; color:var(--cream);}
+.hero-meta span{font-size:.84rem; color:var(--cream-dim);}
+
+/* smoke/flame art panel */
+.flame-art{position:relative; aspect-ratio:4/5; border-radius:4px; overflow:hidden; border:1px solid var(--line);}
+.flame-art svg{width:100%;height:100%;display:block;}
+.flame-caption{position:absolute; left:18px; bottom:18px; right:18px; display:flex; justify-content:space-between; align-items:flex-end;}
+.flame-caption .tag{background:rgba(28,23,18,.72); backdrop-filter:blur(6px); border:1px solid var(--line); padding:9px 14px; font-size:.82rem; color:var(--cream-dim);}
+
+/* ---------- info strip ---------- */
+.strip{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--char-2);}
+.strip .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:0;}
+.strip-item{padding:26px 22px; border-left:1px solid var(--line); display:flex; gap:14px; align-items:flex-start;}
+.strip-item:first-child{border-left:0;}
+.strip-item svg{flex:none; margin-top:2px; color:var(--saffron);}
+.strip-item h3{font-size:.98rem; font-family:'Work Sans',sans-serif; font-weight:600;}
+.strip-item p{font-size:.85rem; color:var(--cream-dim); margin-top:3px;}
+
+/* ---------- section shell ---------- */
+section{padding:96px 0;}
+.section-head{display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:end; margin-bottom:52px;}
+.section-head h2{font-size:clamp(2rem,3.4vw,2.9rem);}
+.section-head p{color:var(--cream-dim); max-width:38ch; font-size:1.02rem; padding-bottom:6px;}
+.section-num{font-family:'Fraunces',serif; font-size:.95rem; color:var(--saffron); border-top:1px solid var(--line); padding-top:8px; align-self:start; margin-top:14px;}
+
+/* ---------- about ---------- */
+.about{background:var(--char);}
+.about-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:64px; align-items:center;}
+.about p{color:var(--cream-dim); margin-top:18px; max-width:52ch;}
+.about-art{aspect-ratio:1/1; position:relative;}
+.about-art svg{width:100%;height:100%;}
+
+/* ---------- menu ---------- */
+.menu{background:var(--char-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.menu-tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:44px;}
+.tab-btn{
+  background:none; border:1px solid var(--line); color:var(--cream-dim); padding:9px 18px; border-radius:20px;
+  font-size:.86rem; cursor:pointer; font-family:'Work Sans',sans-serif; transition:all .2s;
+}
+.tab-btn.active,.tab-btn:hover{border-color:var(--saffron); color:var(--saffron);}
+.menu-panel{display:none;}
+.menu-panel.active{display:block; animation:fade .4s ease;}
+@keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+.menu-list{display:grid; grid-template-columns:1fr 1fr; gap:0 60px;}
+.menu-row{display:flex; justify-content:space-between; gap:18px; padding:20px 0; border-bottom:1px solid var(--line);}
+.menu-row .mi h4{font-family:'Fraunces',serif; font-size:1.12rem; font-weight:500; color:var(--cream);}
+.menu-row .mi p{color:var(--cream-dim); font-size:.86rem; margin-top:5px; max-width:34ch;}
+.menu-row .price{font-family:'Fraunces',serif; color:var(--saffron); white-space:nowrap; padding-top:2px;}
+.menu-note{margin-top:36px; padding:20px 24px; border:1px dashed var(--line); color:var(--cream-dim); font-size:.9rem; display:flex; gap:14px; align-items:flex-start;}
+.menu-note svg{flex:none; color:var(--saffron); margin-top:2px;}
+
+/* ---------- signature ---------- */
+.signature .wrap{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+.sig-card{background:var(--char); padding:40px 32px; position:relative; min-height:300px; display:flex; flex-direction:column; justify-content:flex-end;}
+.sig-card svg{position:absolute; top:32px; left:32px; color:var(--saffron); opacity:.9;}
+.sig-card h3{font-size:1.5rem; margin-top:20px;}
+.sig-card p{color:var(--cream-dim); font-size:.92rem; margin-top:10px;}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--char-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.rev-top{display:grid; grid-template-columns:auto 1fr; gap:56px; align-items:center; margin-bottom:52px;}
+.score{text-align:left;}
+.score .num{font-family:'Fraunces',serif; font-size:5rem; line-height:1; color:var(--saffron);}
+.score .stars{display:block; margin:8px 0 6px; font-size:1.1rem;}
+.score .count{color:var(--cream-dim); font-size:.9rem;}
+.bars{display:flex; flex-direction:column; gap:7px;}
+.bar-row{display:grid; grid-template-columns:16px 1fr; gap:12px; align-items:center; font-size:.82rem; color:var(--cream-dim);}
+.bar-track{height:6px; background:var(--panel); border-radius:3px; overflow:hidden;}
+.bar-fill{height:100%; background:var(--saffron); border-radius:3px;}
+.quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+.quote{background:var(--panel); border:1px solid var(--line); padding:30px 26px;}
+.quote p.body{color:var(--cream); font-size:.98rem; line-height:1.65;}
+.quote .who{margin-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:.84rem; color:var(--cream-dim); border-top:1px solid var(--line); padding-top:14px;}
+.quote .who b{color:var(--cream); display:block; font-weight:600;}
+
+/* ---------- visit ---------- */
+.visit .wrap{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line);}
+.visit-info{padding:56px; border-right:1px solid var(--line);}
+.visit-info h2{font-size:clamp(1.9rem,3vw,2.6rem); margin-bottom:20px;}
+.visit-row{display:flex; gap:16px; padding:18px 0; border-top:1px solid var(--line);}
+.visit-row:first-of-type{border-top:0; padding-top:26px;}
+.visit-row svg{flex:none; color:var(--saffron); margin-top:2px;}
+.visit-row h4{font-weight:600; font-size:.96rem;}
+.visit-row p{color:var(--cream-dim); font-size:.9rem; margin-top:3px;}
+.visit-ctas{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+.map-panel{position:relative; min-height:420px;}
+.map-panel svg{width:100%;height:100%;position:absolute;inset:0;}
+.map-pin{position:absolute; left:50%; top:50%; transform:translate(-50%,-100%); text-align:center;}
+.map-label{position:absolute; left:24px; bottom:24px; background:rgba(28,23,18,.85); border:1px solid var(--line); padding:14px 18px; backdrop-filter:blur(6px);}
+.map-label b{display:block; font-family:'Fraunces',serif; font-size:1.05rem;}
+.map-label span{font-size:.82rem; color:var(--cream-dim);}
+
+/* ---------- footer ---------- */
+footer{padding:64px 0 40px; background:var(--char);}
+.foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:48px; padding-bottom:44px; border-bottom:1px solid var(--line);}
+.foot-brand .brand{margin-bottom:14px;}
+.foot-brand p{color:var(--cream-dim); font-size:.9rem; max-width:32ch;}
+.foot-col h5{font-size:.85rem; color:var(--cream-dim); font-weight:600; margin-bottom:16px; letter-spacing:.3px;}
+.foot-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.foot-col a{color:var(--cream); text-decoration:none; font-size:.92rem;}
+.foot-col a:hover{color:var(--saffron);}
+.foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; font-size:.82rem; color:var(--cream-dim); flex-wrap:wrap; gap:12px;}
+
+/* ---------- responsive ---------- */
+@media (max-width:920px){
+  .nav-links{display:none;}
+  .menu-toggle{display:block;}
+  .hero-grid{grid-template-columns:1fr; gap:44px;}
+  .flame-art{max-width:420px;}
+  .strip .wrap{grid-template-columns:1fr 1fr;}
+  .strip-item:nth-child(3){border-left:0;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-art{max-width:360px; margin:0 auto;}
+  .section-head{grid-template-columns:1fr;}
+  .menu-list{grid-template-columns:1fr;}
+  .signature .wrap{grid-template-columns:1fr;}
+  .rev-top{grid-template-columns:1fr;}
+  .quotes{grid-template-columns:1fr;}
+  .visit .wrap{grid-template-columns:1fr;}
+  .visit-info{border-right:0; border-bottom:1px solid var(--line);}
+  .foot-grid{grid-template-columns:1fr; gap:28px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#dba234" stroke-width="1.4"/><path d="M13 24c1.5-6 4-9 7-9s5.5 3 7 9" stroke="#dba234" stroke-width="1.4" stroke-linecap="round"/><path d="M17 15c-1-2 0-4 1-5M23 15c1-2 0-4-1-5" stroke="#dba234" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Tikka n Curry
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#signature">Specials</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-line" href="tel:+923105111144">Call</a>
+      <a class="btn btn-solid" href="https://www.foodpanda.pk" target="_blank" rel="noopener">Order Online</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-row"><span class="stars">★★★★☆</span><span>3.9 rating · 124 diners on Google</span></div>
+      <h1>Slow smoke,<br>bold <em>karahi</em>,<br>no shortcuts.</h1>
+      <p class="lede">A tandoor-and-karahi kitchen in G-7 Markaz — tikka off live coals, curries finished to order, and a biryani pot that doesn't sit around waiting for you.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="#menu">View the menu</a>
+        <a class="btn btn-line" href="https://www.foodpanda.pk" target="_blank" rel="noopener">Order delivery →</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>Rs 2,000–3,000</b><span>Typical spend per person</span></div>
+        <div><b>12:30 PM</b><span>Opens daily</span></div>
+        <div><b>3 ways</b><span>Dine-in · drive-through · delivery</span></div>
+      </div>
+    </div>
+    <div class="flame-art">
+      <svg viewBox="0 0 480 600" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="g1" cx="50%" cy="85%" r="75%">
+            <stop offset="0%" stop-color="#b3472b"/><stop offset="45%" stop-color="#8f351f"/><stop offset="100%" stop-color="#1c1712"/>
+          </radialGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#241d16"/><stop offset="100%" stop-color="#1c1712"/>
+          </linearGradient>
+        </defs>
+        <rect width="480" height="600" fill="url(#g2)"/>
+        <rect width="480" height="600" fill="url(#g1)"/>
+        <g opacity="0.9">
+          <path d="M120 560 C 100 480, 160 460, 140 400 C 190 440, 200 500, 170 560 Z" fill="#dba234" opacity="0.5"/>
+          <path d="M240 570 C 215 470, 290 440, 260 370 C 320 420, 330 500, 290 570 Z" fill="#dba234" opacity="0.75"/>
+          <path d="M350 560 C 330 480, 390 460, 370 400 C 420 440, 430 500, 400 560 Z" fill="#dba234" opacity="0.4"/>
+        </g>
+        <g stroke="#f4ecda" stroke-width="1" opacity="0.18">
+          <circle cx="240" cy="200" r="150"/><circle cx="240" cy="200" r="100"/>
+        </g>
+        <g fill="#f4ecda" opacity="0.85">
+          <circle cx="150" cy="150" r="2.5"/><circle cx="300" cy="120" r="2"/><circle cx="220" cy="90" r="1.8"/>
+          <circle cx="330" cy="210" r="2.2"/><circle cx="170" cy="230" r="1.6"/><circle cx="260" cy="60" r="1.4"/>
+        </g>
+      </svg>
+      <div class="flame-caption">
+        <div class="tag">Live tandoor</div>
+        <div class="tag">Iftar buffet seasonal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <div><h3>Hours today</h3><p>Closed now · opens 12:30 PM</p></div>
+    </div>
+    <div class="strip-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <div><h3>G-7 Markaz</h3><p>Islamabad · P349+QC</p></div>
+    </div>
+    <div class="strip-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="15" height="11" rx="1.5"/><path d="M18 10h2.2a1 1 0 0 1 .9.6l1.4 3v4.4h-2M7 18a1.6 1.6 0 1 0 0 .1M15 18a1.6 1.6 0 1 0 0 .1"/></svg>
+      <div><h3>Drive-through</h3><p>Plus dine-in &amp; delivery</p></div>
+    </div>
+    <div class="strip-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
+      <div><h3>+92 310 5111144</h3><p>Call ahead for large orders</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-art">
+      <svg viewBox="0 0 400 400">
+        <rect width="400" height="400" fill="#241d16"/>
+        <g fill="none" stroke="#dba234" stroke-width="1.3" opacity="0.85">
+          <path d="M60 340 L60 220 Q60 190 90 190 L120 190 Q150 190 150 220 L150 340"/>
+          <path d="M180 340 L180 180 Q180 140 220 140 Q260 140 260 180 L260 340"/>
+          <path d="M290 340 L290 240 Q290 210 320 210 L340 210 Q360 210 360 240 L360 340"/>
+        </g>
+        <g fill="#b3472b" opacity="0.5">
+          <circle cx="105" cy="190" r="10"/><circle cx="220" cy="140" r="12"/><circle cx="325" cy="210" r="9"/>
+        </g>
+        <line x1="20" y1="340" x2="380" y2="340" stroke="#f4ecda" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
+    <div>
+      <div class="eyebrow-row"><span class="stars">—</span><span>Our kitchen</span></div>
+      <h2 style="font-size:clamp(1.9rem,3vw,2.6rem);">Rooted in Peshawari tandoor, built for Islamabad evenings</h2>
+      <p>Tikka n Curry started as a single tandoor and a promise: coals lit before opening, marinades made that morning, nothing reheated to order. Today the kitchen still runs the same way — charcoal-grilled tikka, karahi tossed to order in small batches, and biryani that goes from dum straight to your plate.</p>
+      <p>We seat groups comfortably for family dinners, keep a drive-through lane moving for a quick pickup, and run a seasonal iftar buffet that regulars plan their evenings around.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">Menu</span>
+      <div><h2>What's cooking tonight</h2></div>
+      <p>A working menu, not the whole book — ask your server about daily specials and the iftar spread.</p>
+    </div>
+
+    <div class="menu-tabs">
+      <button class="tab-btn active" data-tab="bbq">BBQ &amp; Tikka</button>
+      <button class="tab-btn" data-tab="karahi">Karahi &amp; Curry</button>
+      <button class="tab-btn" data-tab="rice">Biryani &amp; Rice</button>
+      <button class="tab-btn" data-tab="drinks">Beverages</button>
+    </div>
+
+    <div class="menu-panel active" data-panel="bbq">
+      <div class="menu-list">
+        <div class="menu-row"><div class="mi"><h4>BBQ Platter</h4><p>The house mix — seekh, malai boti, chicken tikka, mutton chops, served with naan.</p></div><span class="price">Rs 2,400</span></div>
+        <div class="menu-row"><div class="mi"><h4>Chicken Tikka</h4><p>Full or half, charcoal-grilled, finished with a char over live coals.</p></div><span class="price">Rs 950</span></div>
+        <div class="menu-row"><div class="mi"><h4>Malai Boti</h4><p>Cream-marinated chicken boti, mild and rich off the skewer.</p></div><span class="price">Rs 890</span></div>
+        <div class="menu-row"><div class="mi"><h4>Seekh Kabab</h4><p>Hand-minced beef, grilled to order, four to a plate.</p></div><span class="price">Rs 750</span></div>
+        <div class="menu-row"><div class="mi"><h4>Mutton Chops</h4><p>Marinated overnight, grilled with a light smoky crust.</p></div><span class="price">Rs 1,650</span></div>
+        <div class="menu-row"><div class="mi"><h4>Reshmi Kabab</h4><p>Silky chicken kabab, gently spiced.</p></div><span class="price">Rs 820</span></div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="karahi">
+      <div class="menu-list">
+        <div class="menu-row"><div class="mi"><h4>Boneless Butter Chicken</h4><p>Our most-ordered dish — tomato-butter gravy, finished with cream.</p></div><span class="price">Rs 1,850</span></div>
+        <div class="menu-row"><div class="mi"><h4>Chicken Karahi</h4><p>Tossed to order in a wok, tomato-forward, served bone-in or boneless.</p></div><span class="price">Rs 1,700</span></div>
+        <div class="menu-row"><div class="mi"><h4>Mutton Karahi</h4><p>Slow-cooked until tender, finished in the karahi with green chili.</p></div><span class="price">Rs 2,600</span></div>
+        <div class="menu-row"><div class="mi"><h4>Karahi Gosht (Half)</h4><p>Half-portion of our signature mutton karahi.</p></div><span class="price">Rs 1,450</span></div>
+        <div class="menu-row"><div class="mi"><h4>Daal Makhani</h4><p>Black lentils, slow-simmered overnight, buttered.</p></div><span class="price">Rs 650</span></div>
+        <div class="menu-row"><div class="mi"><h4>Paneer Tikka Masala</h4><p>Grilled paneer in a spiced tomato gravy.</p></div><span class="price">Rs 950</span></div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="rice">
+      <div class="menu-list">
+        <div class="menu-row"><div class="mi"><h4>Chicken Biryani</h4><p>Dum-cooked layered rice, served with raita and salan.</p></div><span class="price">Rs 650</span></div>
+        <div class="menu-row"><div class="mi"><h4>Mutton Biryani</h4><p>The same dum method, mutton in place of chicken.</p></div><span class="price">Rs 850</span></div>
+        <div class="menu-row"><div class="mi"><h4>Plain Rice</h4><p>Steamed basmati, served as a side.</p></div><span class="price">Rs 300</span></div>
+        <div class="menu-row"><div class="mi"><h4>Tandoori Naan</h4><p>Fresh from the tandoor, plain or garlic.</p></div><span class="price">Rs 90</span></div>
+      </div>
+    </div>
+
+    <div class="menu-panel" data-panel="drinks">
+      <div class="menu-list">
+        <div class="menu-row"><div class="mi"><h4>Rooh Afza Sharbat</h4><p>Chilled, made fresh — an iftar table regular.</p></div><span class="price">Rs 250</span></div>
+        <div class="menu-row"><div class="mi"><h4>Fresh Lime Squash</h4><p>Sweet or salted, made to order.</p></div><span class="price">Rs 280</span></div>
+        <div class="menu-row"><div class="mi"><h4>Mint Margarita (Mocktail)</h4><p>Fresh mint, lime, soda.</p></div><span class="price">Rs 320</span></div>
+        <div class="menu-row"><div class="mi"><h4>Soft Drinks</h4><p>Regular or diet, 345ml.</p></div><span class="price">Rs 150</span></div>
+      </div>
+    </div>
+
+    <div class="menu-note">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      <p>Prices are approximate and can shift with market rates. Ramadan brings a set-price iftar buffet — call ahead for the current spread and timing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="signature" id="signature">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:44px;">
+      <span class="section-num">Order these first</span>
+      <div><h2>Three dishes regulars keep coming back for</h2></div>
+      <p></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sig-card">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v3M8 4.5 9 7M16 4.5 15 7"/><path d="M5 12c0 5 3 9 7 9s7-4 7-9"/><path d="M5 12h14"/></svg>
+      <h3>Boneless Butter Chicken</h3>
+      <p>The dish most first-timers are steered toward — tomato-butter gravy, finished silky with cream, meant for scooping with naan.</p>
+    </div>
+    <div class="sig-card">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 18h16M6 18V9l6-4 6 4v9"/><path d="M10 18v-5h4v5"/></svg>
+      <h3>BBQ Platter</h3>
+      <p>Seekh, malai boti, chicken tikka and mutton chops off the same coals, built for a table sharing plates and stories.</p>
+    </div>
+    <div class="sig-card">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="12" cy="7" rx="8" ry="3"/><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+      <h3>Mutton Karahi</h3>
+      <p>Cooked low and slow until it falls off the bone, then tossed in the karahi with green chili and a hit of fresh coriander.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rev-top">
+      <div class="score">
+        <span class="num">3.9</span>
+        <span class="stars">★★★★☆</span>
+        <span class="count">from 124 Google reviews</span>
+      </div>
+      <div class="bars">
+        <div class="bar-row"><span>5</span><div class="bar-track"><div class="bar-fill" style="width:52%"></div></div></div>
+        <div class="bar-row"><span>4</span><div class="bar-track"><div class="bar-fill" style="width:26%"></div></div></div>
+        <div class="bar-row"><span>3</span><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div></div>
+        <div class="bar-row"><span>2</span><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div></div>
+        <div class="bar-row"><span>1</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div></div>
+      </div>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <p class="body">Tried the butter chicken on a friend's recommendation and it lived up to the hype — rich, well-balanced, and clearly made to order.</p>
+        <div class="who"><span>Local Guide · 95 reviews</span><b>Hariss A.</b></div>
+      </div>
+      <div class="quote">
+        <p class="body">Service was attentive without being pushy, the karahi came out hot, and the biryani had that proper dum flavour you don't always get.</p>
+        <div class="who"><span>Local Guide · 752 reviews</span><b>M. Shahid</b></div>
+      </div>
+      <div class="quote">
+        <p class="body">Went for the iftar buffet after seeing it online — good value for the spread, and worth booking a table ahead during Ramadan.</p>
+        <div class="who"><span>Local Guide · 149 reviews</span><b>Emma K.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="visit-info">
+      <span class="eyebrow-row" style="margin-bottom:18px;"><span class="stars">—</span><span>Find us</span></span>
+      <h2>Come hungry, leave with leftovers</h2>
+      <div class="visit-row">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div><h4>Address</h4><p>G-7 Markaz, G-7, Islamabad, 04405, Pakistan</p></div>
+      </div>
+      <div class="visit-row">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><h4>Hours</h4><p>Opens daily at 12:30 PM</p></div>
+      </div>
+      <div class="visit-row">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
+        <div><h4>Phone</h4><p>+92 310 5111144</p></div>
+      </div>
+      <div class="visit-row">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="15" height="11" rx="1.5"/><path d="M18 10h2.2a1 1 0 0 1 .9.6l1.4 3v4.4h-2"/></svg>
+        <div><h4>Service</h4><p>Dine-in · Drive-through · No-contact delivery</p></div>
+      </div>
+      <div class="visit-ctas">
+        <a class="btn btn-solid" href="https://www.google.com/maps/search/?api=1&query=Tikka+n+Curry+Restaurant+G-7+Markaz+Islamabad" target="_blank" rel="noopener">Get directions</a>
+        <a class="btn btn-line" href="tel:+923105111144">Call to reserve</a>
+      </div>
+    </div>
+    <div class="map-panel">
+      <svg viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice">
+        <rect width="500" height="500" fill="#241d16"/>
+        <g stroke="#3a2e22" stroke-width="10">
+          <line x1="0" y1="120" x2="500" y2="120"/><line x1="0" y1="280" x2="500" y2="280"/>
+          <line x1="150" y1="0" x2="150" y2="500"/><line x1="360" y1="0" x2="360" y2="500"/>
+        </g>
+        <g stroke="#4a3b2c" stroke-width="2" opacity="0.6">
+          <line x1="0" y1="60" x2="500" y2="60"/><line x1="0" y1="200" x2="500" y2="200"/><line x1="0" y1="360" x2="500" y2="360"/>
+          <line x1="60" y1="0" x2="60" y2="500"/><line x1="260" y1="0" x2="260" y2="500"/><line x1="440" y1="0" x2="440" y2="500"/>
+        </g>
+      </svg>
+      <div class="map-pin" style="left:50%;top:46%;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="#b3472b" stroke="#f4ecda" stroke-width="1"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8Z"/><circle cx="12" cy="10" r="3" fill="#f4ecda"/></svg>
+      </div>
+      <div class="map-label"><b>Tikka n Curry</b><span>G-7 Markaz · P349+QC Islamabad</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <svg class="mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#dba234" stroke-width="1.4"/><path d="M13 24c1.5-6 4-9 7-9s5.5 3 7 9" stroke="#dba234" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Tikka n Curry
+        </div>
+        <p>Charcoal tikka, hand-tossed karahi and dum biryani in G-7 Markaz, Islamabad. Dine-in, drive-through and delivery, every day from 12:30 PM.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#menu">Full menu</a></li>
+          <li><a href="#signature">Signature dishes</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#visit">Directions</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+923105111144">+92 310 5111144</a></li>
+          <li><a href="https://www.foodpanda.pk" target="_blank" rel="noopener">Order on foodpanda</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Tikka+n+Curry+Restaurant+G-7+Markaz+Islamabad" target="_blank" rel="noopener">G-7 Markaz, Islamabad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Tikka n Curry Restaurant. All rights reserved.</span>
+      <span>Menu &amp; prices subject to change without notice.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector('.menu-panel[data-panel="'+btn.dataset.tab+'"]').classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
